@@ -15,7 +15,7 @@ public class VigenereCipher {
                 encryptedText.append(alphabet.charAt(encryptedIndex));
                 keyIndex++;
             } else {
-                encryptedText.append(character); // если символ не в алфавите, оставляем его без изменений
+                encryptedText.append(character); //не в алфавите - без изменений
             }
         }
 
@@ -35,7 +35,7 @@ public class VigenereCipher {
                 decryptedText.append(alphabet.charAt(decryptedIndex));
                 keyIndex++;
             } else {
-                decryptedText.append(character); // если символ не в алфавите, оставляем его без изменений
+                decryptedText.append(character); //символ не в алфавите, без изменений
             }
         }
 

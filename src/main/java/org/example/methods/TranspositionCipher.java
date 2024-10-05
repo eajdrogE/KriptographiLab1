@@ -9,14 +9,14 @@ public class TranspositionCipher {
         int numRows = (int) Math.ceil((double) plaintext.length() / key.length());
         char[][] grid = new char[numRows][key.length()];
 
-        // Заполнение сетки символами текста
+        // заполнение сетки
         int k = 0;
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < key.length(); j++) {
                 if (k < plaintext.length()) {
                     grid[i][j] = plaintext.charAt(k++);
                 } else {
-                    grid[i][j] = ' '; // Заполнение пустыми символами
+                    grid[i][j] = ' '; // после переделать
                 }
             }
         }
@@ -38,19 +38,19 @@ public class TranspositionCipher {
         int numRows = (int) Math.ceil((double) ciphertext.length() / key.length());
         char[][] grid = new char[numRows][key.length()];
 
-        // Заполнение сетки символами шифротекста
+        // заполнение сетки символами шифротекста
         int k = 0;
         for (int col : keyOrder) {
             for (int row = 0; row < numRows; row++) {
                 if (k < ciphertext.length()) {
                     grid[row][col] = ciphertext.charAt(k++);
                 } else {
-                    grid[row][col] = ' '; // Заполнение пустыми символами
+                    grid[row][col] = ' ';//переделать
                 }
             }
         }
 
-        // Дешифрование
+
         StringBuilder decryptedText = new StringBuilder();
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < key.length(); j++) {

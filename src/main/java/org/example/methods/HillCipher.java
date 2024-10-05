@@ -3,7 +3,7 @@ package org.example.methods;
 
 public class HillCipher {
 
-    // Метод для получения матрицы ключа из строки
+    //матрица ключа из строки
     public static int[][] getKeyMatrix(String key, int matrixSize, String alphabet) {
         int[][] keyMatrix = new int[matrixSize][matrixSize];
         int keyIndex = 0;
@@ -19,7 +19,7 @@ public class HillCipher {
                     keyMatrix[i][j] = pos;
                     keyIndex++;
                 } else {
-                    keyMatrix[i][j] = 0; // Дополнение нулями, если ключ короче необходимого
+                    keyMatrix[i][j] = 0; // Дополнение нулями(мб что-то другое но пока фурычит)
                 }
             }
         }
@@ -27,7 +27,6 @@ public class HillCipher {
         return keyMatrix;
     }
 
-    // Метод для шифрования текста
     public static String encrypt(String plaintext, String key, String alphabet) {
         int matrixSize = (int) Math.sqrt(key.length());
         if (matrixSize * matrixSize != key.length()) {
@@ -39,7 +38,7 @@ public class HillCipher {
 
         if (plaintext.length() % matrixSize != 0) {
             int paddingLength = matrixSize - (plaintext.length() % matrixSize);
-            char firstAlphabetChar = alphabet.charAt(0); // Первый символ алфавита
+            char firstAlphabetChar = alphabet.charAt(0);
             for (int i = 0; i < paddingLength; i++) {
                 plaintext += firstAlphabetChar; // Дополнение первым символом алфавита
             }
@@ -66,7 +65,7 @@ public class HillCipher {
         return ciphertext.toString();
     }
 
-    // Метод для дешифрования текста
+
     public static String decrypt(String ciphertext, String key, String alphabet) {
         int matrixSize = (int) Math.sqrt(key.length());
         if (matrixSize * matrixSize != key.length()) {
@@ -107,7 +106,7 @@ public class HillCipher {
         return plaintext.toString();
     }
 
-    // Вспомогательный метод для умножения матрицы на вектор
+    // матрицу на вектор
     private static int[] multiplyMatrixVector(int[][] matrix, int[] vector, int modulus) {
         int[] result = new int[matrix.length];
         for (int row = 0; row < matrix.length; row++) {
@@ -123,7 +122,7 @@ public class HillCipher {
         return result;
     }
 
-    // Метод для получения обратной матрицы ключа
+    // метод для получения обратной матрицы ключа(переделать как будет время)
     public static int[][] inverseKeyMatrix(int[][] keyMatrix, int modulus) {
         int n = keyMatrix.length;
         int det = determinant(keyMatrix, modulus);
@@ -172,11 +171,10 @@ public class HillCipher {
             }
 
             if (pivot == -1) {
-                return 0; // Детерминант равен нулю
+                return 0; // детерминант равен нулю блять
             }
-
+            //pivo
             if (pivot != i) {
-                // Меняем строки местами
                 int[] temp = mat[i];
                 mat[i] = mat[pivot];
                 mat[pivot] = temp;
@@ -186,7 +184,7 @@ public class HillCipher {
             det = mod(det * mat[i][i], modulus);
             int inv = modInverse(mat[i][i], modulus);
             if (inv == -1) {
-                return 0; // Обратный элемент не существует
+                return 0; // проверка на обратный элемент
             }
 
             for (int j = i + 1; j < n; j++) {
@@ -200,7 +198,7 @@ public class HillCipher {
         return det;
     }
 
-    // Метод для вычисления матрицы присоединений (аджугат)
+    // метод для вычисления матрицы присоединений, в гугле аджугате
     private static int[][] adjugate(int[][] matrix, int modulus) {
         int n = matrix.length;
         int[][] adj = new int[n][n];
@@ -215,14 +213,14 @@ public class HillCipher {
                 int sign = ((i + j) % 2 == 0) ? 1 : -1;
                 int[][] minor = getMinor(matrix, i, j);
                 int det = determinant(minor, modulus);
-                adj[j][i] = mod(sign * det, modulus); // Транспонирование
+                adj[j][i] = mod(sign * det, modulus); // транспонирую
             }
         }
 
         return adj;
     }
 
-    // Метод для получения минора матрицы
+    // метод для получения минора матрицы, хотя можно было проще(если время будет переделать)
     private static int[][] getMinor(int[][] matrix, int row, int col) {
         int n = matrix.length;
         int[][] minor = new int[n - 1][n - 1];
@@ -242,7 +240,7 @@ public class HillCipher {
         return minor;
     }
 
-    // Метод для вычисления обратного элемента по модулю (расширенный алгоритм Евклида)
+    // метод для вычисления обратного элемента по модулю (расширенный алгоритм Евклида)
     private static int modInverse(int a, int modulus) {
         int m0 = modulus, t, q;
         int x0 = 0, x1 = 1;
@@ -268,8 +266,6 @@ public class HillCipher {
 
         return x1;
     }
-
-    // Метод для вычисления остатка, учитывая отрицательные числа
     private static int mod(int a, int m) {
         int res = a % m;
         if (res < 0) {

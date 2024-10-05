@@ -20,14 +20,14 @@ public class Main {
         System.out.println("6. Шифр Виженера");
 
         int cipherChoice = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine();
 
         System.out.println("Выберите операцию:");
         System.out.println("1. Шифрование");
         System.out.println("2. Расшифрование");
 
         int operationChoice = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine();
 
         switch (cipherChoice) {
             case 1:

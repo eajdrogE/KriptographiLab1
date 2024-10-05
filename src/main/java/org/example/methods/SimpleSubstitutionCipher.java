@@ -14,7 +14,7 @@ public class SimpleSubstitutionCipher {
             if (substitutionMap.containsKey(character)) {
                 encryptedText.append(substitutionMap.get(character));
             } else {
-                encryptedText.append(character); // если символ не в алфавите, оставляем его без изменений
+                encryptedText.append(character); //символ не в алфавите,без изменений
             }
         }
 
@@ -30,7 +30,7 @@ public class SimpleSubstitutionCipher {
             if (reverseSubstitutionMap.containsKey(character)) {
                 decryptedText.append(reverseSubstitutionMap.get(character));
             } else {
-                decryptedText.append(character); // если символ не в алфавите, оставляем его без изменений
+                decryptedText.append(character); //символ не в алфавите,без изменений
             }
         }
 

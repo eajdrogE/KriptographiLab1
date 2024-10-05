@@ -4,7 +4,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class shiftCipher {
-    // Метод для шифрования текста
     public static String encrypt(String text, String key, String alphabet) {
         validateInputs(text, key, alphabet);
         int shift = Integer.parseInt(key.trim());
