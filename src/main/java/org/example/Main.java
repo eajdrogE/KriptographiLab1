@@ -34,12 +34,10 @@ public class Main {
 
                 if (operationChoice == 1){
                     String encryptedText = shiftCipher.encrypt(DataInput.inputText, DataInput.key, DataInput.alphabet);
-                   // System.out.println("Зашифрованный текст: " + encryptedText);
                     DataOutput.printEncryptedText(encryptedText);
                 }
                     else if (operationChoice == 2) {
                     String decryptedText = shiftCipher.decrypt(DataInput.inputText, DataInput.key, DataInput.alphabet);
-                    //System.out.println("Расшифрованный текст: " + decryptedText);
                     DataOutput.printDecryptedText(decryptedText);
                 }
                     else System.out.println("Некоректный ввод");
